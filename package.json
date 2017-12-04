@@ -1,0 +1,20 @@
+{
+  "name": "backend-soniccook",
+  "version": "1.0.0",
+  "description": "Backend app for SonicCook.  A web portal cookbook for musicians.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Music",
+    "Musician",
+    "Cookbook",
+    "Cook",
+    "Sonic",
+    "Musical",
+    "Gear"
+  ],
+  "author": "Tassos Lambrou",
+  "license": "ISC"
+}
