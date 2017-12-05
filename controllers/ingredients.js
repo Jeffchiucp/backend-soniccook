@@ -1,3 +1,5 @@
+var amazon = require('amazon-product-api')
+
 module.exports = (app) => {
 
   // LOOKUP
@@ -21,8 +23,9 @@ module.exports = (app) => {
       browseNodeId: '11091801',
       responseGroup: "ItemAttributes,BrowseNodes,Images"
     }).then(function(results){
-      console.log("We got results!: ", results[0].MediumImage[0]);
-      res.json(results)
+      console.log("We got results!: ", results);
+      const cleaned = results.map(item => item.ItemAttributes[0].Title[0])
+      res.json(cleaned)
     }).catch(function(err){
       console.log("There was an error: ", err.Error[0].Message);
     });

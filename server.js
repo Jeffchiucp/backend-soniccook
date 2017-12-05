@@ -6,9 +6,17 @@ var bodyParser = require('body-parser')
 var cookie = require('cookie')
 var cookieParser = require('cookie-parser')
 var acceptOverride = require('connect-acceptoverride')
+
 // var jwt = require('express-jwt')
 // var slugify = require('slugify')
 // var moment = require('moment')
+
+// SEQUELIZE
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('soniccook_dev', 'postgres', null, { dialect: 'postgres' });
+const sync = () => {
+  return sequelize.sync({ force: true })
+}
 
 // ALLOW CORS
 var allowCrossDomain = function(req, res, next) {
@@ -39,4 +47,7 @@ require('./controllers/ingredients.js')(app);
 var port = process.env.PORT || 8000;
 app.listen(port, function () {
   console.log('SonicCook listening on port 8000!');
+  sync()
+    .then(() => console.log('... and Database synced!'))
+    .catch( e => console.log(e))
 });
