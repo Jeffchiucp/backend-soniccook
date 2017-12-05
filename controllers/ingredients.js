@@ -1,7 +1,7 @@
 module.exports = (app) => {
 
   // LOOKUP
-  app.get('/instruments/:search', (req, res) => {
+  app.get('/ingredients/:search', (req, res) => {
     // res.json({message: "Success!"});
     const text = req.params.search
 
@@ -27,5 +27,7 @@ module.exports = (app) => {
       console.log("There was an error: ", err.Error[0].Message);
     });
   })
+
+
 
 }

@@ -33,6 +33,7 @@ app.use(function (req, res, next) {
 //ROUTES
 //===========
 require('./controllers/recipes.js')(app);
+require('./controllers/ingredients.js')(app);
 
 // SERVER
 var port = process.env.PORT || 8000;
