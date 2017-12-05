@@ -9,7 +9,8 @@ module.exports = (app) => {
 
     var awsClient = amazon.createClient({
       awsId: process.env.AWSAccessKeyId,
-      awsSecret: process.env.AWSSecretKey
+      awsSecret: process.env.AWSSecretKey,
+      awsTag: process.env.AWSTag
     });
 
     // BrowseNode: 11091801
@@ -20,14 +21,17 @@ module.exports = (app) => {
     // responseGroup: "ItemAttributes,BrowseNodes"
     awsClient.itemSearch({
       keywords: text,
-      browseNodeId: '11091801',
-      responseGroup: "ItemAttributes,BrowseNodes,Images"
+      browseNodeId: '11965861',
+      searchIndex: 'MusicalInstruments',
+      responseGroup: "ItemAttributes,Images,BrowseNodes"
     }).then(function(results){
-      console.log("We got results!: ", results);
+      console.log("We got results!: ", results)
+      console.log("We got nodes!: ", results[0].BrowseNodes[0].BrowseNode[0].BrowseNodeId)
       const cleaned = results.map(item => item.ItemAttributes[0].Title[0])
       res.json(cleaned)
     }).catch(function(err){
-      console.log("There was an error: ", err.Error[0].Message);
+      console.log("There was an error: ", err.Error[0].Message)
+      res.status(500).send('Something broke!', err)
     });
   })
 
