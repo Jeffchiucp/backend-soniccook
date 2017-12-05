@@ -4,7 +4,9 @@ module.exports = (sequelize, DataTypes) => {
     artist: DataTypes.STRING,
     track: DataTypes.STRING,
     album: DataTypes.STRING,
-    instructions: DataTypes.TEXT
+    instructions: DataTypes.TEXT,
+    instrument: DataTypes.STRING,
+    sampleURL: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
