@@ -42,6 +42,7 @@ app.use(function (req, res, next) {
 //===========
 require('./controllers/recipes.js')(app);
 require('./controllers/ingredients.js')(app);
+require('./controllers/search.js')(app);
 
 // SERVER
 var port = process.env.PORT || 8000;
