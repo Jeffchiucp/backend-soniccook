@@ -8,7 +8,7 @@ module.exports = (app) => {
     console.log("Here is the term: ",req.params.term)
     const term = req.params.term
     var opts = {
-      maxResults: 6,
+      maxResults: 20,
       key: API_KEY,
       type: 'video'
     };
