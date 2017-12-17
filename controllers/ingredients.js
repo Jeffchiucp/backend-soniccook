@@ -25,8 +25,6 @@ module.exports = (app) => {
       searchIndex: 'MusicalInstruments',
       responseGroup: "ItemAttributes,Images,BrowseNodes"
     }).then(function(results){
-      console.log("We got results!: ", results)
-      console.log("We got nodes!: ", results[0].BrowseNodes[0].BrowseNode[0].BrowseNodeId)
       const cleaned = results.map(item => item.ItemAttributes[0].Title[0])
       res.json(cleaned)
     }).catch(function(err){
